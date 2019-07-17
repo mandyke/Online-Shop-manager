@@ -1,0 +1,127 @@
+﻿<UserControl x:Class="PosManager.Views.AddSales"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PosManager.Views"
+             mc:Ignorable="d" Background="LightGray"
+             
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid Margin="0,8,0,-8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="1"  Grid.Column="1" FontSize="36"
+                   Content="Add New Sales Record" Grid.ColumnSpan="3"
+                   Margin="0,0,0,10" Background="Gray" />
+
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="Customer Name" Margin="0,0,0,10"/>
+            <ComboBox Grid.Row="2" x:Name="customerNameCombo" Grid.Column="2" Width="150" Margin="0 0 0 10" HorizontalAlignment="Left">
+
+            </ComboBox>
+
+            <TextBlock Grid.Column="3" Grid.Row="2"
+                   Text="Product" Margin="0,0,0,10"/>
+
+            <ComboBox Grid.Row="2" x:Name="productNameCombo" Grid.Column="4" Width="150" Margin="0 0 0 10" SelectionChanged="ProductNameCombo_SelectionChanged">
+
+            </ComboBox>
+
+            <Button x:Name="newCustomer" Content="New Customer" 
+                Grid.Column="6" Grid.Row="2" 
+                Margin="0,0,0,10" Click="NewCustomerButton_Click" />
+
+            <TextBlock Grid.Column="1" Grid.Row="3"
+                   Text="Quantity" Margin="0,0,0,10"/>
+
+            <TextBox x:Name="quantity" Grid.Column="2" Grid.Row="3" 
+                 Width="150" Margin="0,0,0,10" />
+
+
+            <TextBlock Grid.Column="3" Grid.Row="3"
+                   Text="Price" Margin="0,0,0,10"/>
+
+            <TextBox x:Name="price" Grid.Column="4" Grid.Row="3" 
+                 Width="150" Margin="0,0,0,10" />
+
+
+            <TextBlock Grid.Column="1" Grid.Row="4"
+                   Text="Amount Paid" Margin="0,0,0,10"/>
+
+            <TextBox x:Name="amountPaid" Grid.Column="2" Grid.Row="4" 
+                 Width="150" Margin="0,0,0,10"/>
+
+            <TextBlock Grid.Column="3" Grid.Row="4"
+                   Text="Balance" Margin="0,0,0,10"/>
+
+            <TextBox x:Name="balance" Grid.Column="4" Grid.Row="4" 
+                 Width="150" Margin="0,0,0,10"/>
+
+            <Button x:Name="submitButton" Content="Submit" 
+                Grid.Column="6" Grid.Row="3" 
+                Margin="0,0,0,10" Click="SubmitButton_Click" />
+
+            <Button x:Name="clearButton" Content="New Sales" 
+                Grid.Column="6" Grid.Row="5" 
+                Margin="0,0,0,10" Click="ClearButton_Click" />
+
+            <Button x:Name="cashBalance" Content="Pay" 
+                Grid.Column="6" Grid.Row="4" 
+                Margin="0,0,0,10" Click="Balance_Click" />
+
+            <Button x:Name="grandTotal" Content="Grand Total" 
+                Grid.Column="3" Grid.Row="5" 
+                Margin="0,0,0,10" Click="GrandTotal_Click" />
+
+            <TextBox x:Name="gridTotal" Grid.Column="4" Grid.Row="5" 
+                 Width="150" Margin="0,0,0,10"/>
+
+
+
+
+
+
+
+            <DataGrid x:Name="AddSalesGrid"  Grid.Row="6" MinWidth="20" Grid.ColumnSpan="7" Grid.RowSpan="3" SelectionChanged="AddSalesGrid_SelectionChanged" Margin="0,0,20,0" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Sales ID" Binding="{Binding SalesID}" />
+                    <DataGridTextColumn Header="Customer Name" Binding="{Binding CustomerName}" />
+                    <DataGridTextColumn Header="Sales Date" Binding="{Binding Dates}" />
+                    <DataGridTextColumn Header="Price" Binding="{Binding ProductPrice}" />
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding QuantityPurchased}" />
+                    <DataGridTextColumn Header="Product" Binding="{Binding ProductName}" />
+                    <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}" />
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <!--  <TextBlock Text="{Binding Details}" />-->
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
+        </Grid>
+
+    </Grid>
+</UserControl>
